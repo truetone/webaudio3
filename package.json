@@ -5,5 +5,8 @@
   "main": "index.js",
   "author": "Tony Thomas",
   "license": "GPL",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
