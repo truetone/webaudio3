@@ -8,5 +8,8 @@
   "private": false,
   "devDependencies": {
     "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "tone": "^13.4.9"
   }
 }
