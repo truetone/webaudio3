@@ -1,10 +1,11 @@
-const Tone = require("Tone").Synth;
+const Tone = require("Tone");
 
 class App {
   constructor(selector) {
     this.elem = document.getElementById(selector);
     this.elem.addEventListener("click", () => this.clickHandler());
-    this.tone = new Tone().toMaster();
+    this.tone = new Tone.Synth().toMaster();
+    this.loop = this.setUpLoop();
   }
 
   clickHandler() {
@@ -13,7 +14,15 @@ class App {
   }
 
   play(note, duration) {
-    this.tone.triggerAttackRelease("C4", "8n");
+    this.loop.start("1m").stop("4m");
+    Tone.Transport.start();
+  }
+
+  setUpLoop() {
+    // play a note every quarter-note
+    return new Tone.Loop((time) => {
+      this.tone.triggerAttackRelease("C2", "8n", time);
+    }, "4n");
   }
 }
 
