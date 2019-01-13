@@ -1,0 +1,9 @@
+{
+  "name": "webaudio3",
+  "version": "0.0.0",
+  "description": "Building a web audio project from the ground up",
+  "main": "index.js",
+  "author": "Tony Thomas",
+  "license": "GPL",
+  "private": false
+}
