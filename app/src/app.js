@@ -9,6 +9,10 @@ class App {
 
   clickHandler() {
     // play a middle 'C' for the duration of an 8th note
+    this.play("C4", "8n");
+  }
+
+  play(note, duration) {
     this.tone.triggerAttackRelease("C4", "8n");
   }
 }
