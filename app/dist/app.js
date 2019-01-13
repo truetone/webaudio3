@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const tone = __webpack_require__(/*! tone */ \"./node_modules/tone/build/Tone.js\");\n\nclass App {\n  constructor(selector) {\n    this.elem = document.getElementById(selector);\n    this.elem.addEventListener(\"click\", () => this.clickHandler);\n    this.tone = new tone.Synth().toMaster();\n  }\n\n  clickHandler() {\n    this.tone.start();\n    // play a middle 'C' for the duration of an 8th note\n    synth.triggerAttackRelease(\"C4\", \"8n\");\n  }\n}\n\nmodule.exports = App;\n\n\n//# sourceURL=webpack:///./app/src/app.js?");
+eval("const tone = __webpack_require__(/*! tone */ \"./node_modules/tone/build/Tone.js\");\n\nclass App {\n  constructor(selector) {\n    this.elem = document.getElementById(selector);\n    this.elem.addEventListener(\"click\", () => this.clickHandler);\n    this.tone = new tone.Synth().toMaster();\n  }\n\n  clickHandler() {\n    this.tone.start();\n    // play a middle 'C' for the duration of an 8th note\n    this.tone.synth.triggerAttackRelease(\"C4\", \"8n\");\n  }\n}\n\nmodule.exports = App;\n\n\n//# sourceURL=webpack:///./app/src/app.js?");
 
 /***/ }),
 

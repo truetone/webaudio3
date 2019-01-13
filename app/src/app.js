@@ -1,16 +1,15 @@
-const tone = require("tone");
+const Tone = require("Tone").Synth;
 
 class App {
   constructor(selector) {
     this.elem = document.getElementById(selector);
-    this.elem.addEventListener("click", () => this.clickHandler);
-    this.tone = new tone.Synth().toMaster();
+    this.elem.addEventListener("click", () => this.clickHandler());
+    this.tone = new Tone().toMaster();
   }
 
   clickHandler() {
-    this.tone.start();
     // play a middle 'C' for the duration of an 8th note
-    synth.triggerAttackRelease("C4", "8n");
+    this.tone.triggerAttackRelease("C4", "8n");
   }
 }
 
