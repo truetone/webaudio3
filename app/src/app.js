@@ -1,28 +1,39 @@
 const Tone = require("Tone");
 
 class App {
-  constructor(selector) {
-    this.elem = document.getElementById(selector);
-    this.elem.addEventListener("click", () => this.clickHandler());
-    this.tone = new Tone.Synth().toMaster();
+  constructor(startSelector, stopSelector, config) {
+    this.startButton = document.getElementById(startSelector);
+    this.startButton.addEventListener("click", () => this.start());
+    this.stopButton = document.getElementById(stopSelector);
+    this.stopButton.addEventListener("click", () => this.stop());
+    this.tone = new Tone.Synth(config.synth).toMaster();
     this.loop = this.setUpLoop();
+    this.bassConfig = config.bass;
+    this.notes = config.notes;
+    this.loopDuration = config.loopDuration;
   }
 
-  clickHandler() {
-    // play a middle 'C' for the duration of an 8th note
-    this.play("C4", "8n");
-  }
-
-  play(note, duration) {
-    this.loop.start("1m").stop("4m");
+  start() {
+    this.loop.start(this.bassConfig.startAt);
     Tone.Transport.start();
   }
 
+  stop() {
+    this.loop.stop();
+  }
+
   setUpLoop() {
-    // play a note every quarter-note
     return new Tone.Loop((time) => {
-      this.tone.triggerAttackRelease("C2", "8n", time);
-    }, "4n");
+      this.triggerAttackRelease(time);
+    }, this.loopInterval);
+  }
+
+  triggerAttackRelease(time) {
+    this.tone.triggerAttackRelease(
+      this.notes.bassNote,
+      this.bassConfig.noteDuration,
+      time
+    );
   }
 }
 
