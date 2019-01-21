@@ -1,12 +1,15 @@
 const Bar = require("./bar");
 const Chord = require("./chord");
 const Interval = require("music-fns").Interval;
+const Master = require("Tone").Master;
 const MultiTone = require("./multi_tone");
 const Reverb = require("Tone").Freeverb;
 const Tone = require("Tone");
 const ToneSequence = require("./tone_sequence");
 const Transport = require("Tone").Transport;
 const transpose = require("music-fns").transpose;
+const butterchurn = require("butterchurn");
+const butterchurnPresets = require("butterchurn-presets");
 
 class App {
   constructor(startSelector, stopSelector, config) {
@@ -32,6 +35,19 @@ class App {
     this.chordTwo = new MultiTone(new Chord(transpose(config.chord.root, Interval.OCTAVE)).minor, config.chord.volume);
     Transport.bpm.value = config.bpm;
     this.transport = Transport;
+
+    const canvas = document.getElementsByTagName("canvas")[0];
+    this.visualizer = butterchurn.createVisualizer(Tone.context, canvas, {
+      width: 800,
+      height: 600
+    });
+
+    this.visualizer.connectAudio(Master);
+
+    const presets = butterchurnPresets.getPresets();
+    const preset = presets["Flexi, martin + geiss - dedicated to the sherwin maxawow"];
+
+    this.visualizer.loadPreset(preset, 0.0);
   }
 
   start() {
@@ -60,6 +76,7 @@ class App {
     return setInterval(() => {
       this.bars.synthNames.forEach((name, idx) => {
         this.animate(idx, name);
+        this.visualizer.render();
       });
     }, 10);
   }
