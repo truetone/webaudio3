@@ -36,8 +36,8 @@ class App {
     Transport.bpm.value = config.bpm;
     this.transport = Transport;
 
-    const canvas = document.getElementsByTagName("canvas")[0];
-    this.visualizer = butterchurn.createVisualizer(Tone.context, canvas, {
+    this.canvas = document.getElementsByTagName("canvas")[0];
+    this.visualizer = butterchurn.createVisualizer(Tone.context, this.canvas, {
       width: 800,
       height: 600
     });
@@ -45,9 +45,12 @@ class App {
     this.visualizer.connectAudio(Master);
 
     const presets = butterchurnPresets.getPresets();
-    const preset = presets["Flexi, martin + geiss - dedicated to the sherwin maxawow"];
+    const presetKeys = Object.keys(presets);
+    console.log(presetKeys);
+    const preset = presets[presetKeys[93]];
 
     this.visualizer.loadPreset(preset, 0.0);
+    this.visualizer.setRendererSize(1600, 1200);
   }
 
   start() {
@@ -59,6 +62,7 @@ class App {
     this.chordTwo.play();
     this.transport.start();
     this.poll();
+    this.canvas.requestFullscreen();
   }
 
   stop() {
@@ -78,7 +82,7 @@ class App {
         this.animate(idx, name);
         this.visualizer.render();
       });
-    }, 10);
+    }, 1000 / 30); // 30 fps
   }
 
   animate(idx, name) {
