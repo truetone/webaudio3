@@ -22,6 +22,7 @@
   "dependencies": {
     "music-fns": "^0.1.3",
     "normalize.css": "^8.0.1",
+    "p5": "^0.7.3",
     "tone": "^13.4.9"
   },
   "scripts": {
