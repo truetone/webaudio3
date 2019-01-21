@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Tone</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+<style>
+.splash {
+  height: 80%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 80%;
+}
+
+#level {
+  height: 400px;
+  width: 100%;
+}
+
+.bar {
+  height: 0;
+}
+
+#bar-one {
+  background: blue;
+}
+
+#bar-two {
+  background: green;
+}
+
+#bar-three {
+  background: red;
+}
+
+#bar-four {
+  background: orange;
+}
+</style>
+</head>
+<body>
+  <div class="splash-container">
+    <div class="splash">
+      <h1>Tone.js Experiments</h1>
+      <p>
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+      </p>
+      <div class="pure-g">
+        <div id="level">
+          <div class="bar pure-u-1-4" id="bar-one" data-synth-name="partL"></div>
+          <div class="bar pure-u-1-4" id="bar-two" data-synth-name="duoPartOne"></div>
+          <div class="bar pure-u-1-4" id="bar-three" data-synth-name="partCenter"></div>
+          <div class="bar pure-u-1-4" id="bar-four" data-synth-name="partR"></div>
+        </div>
+      </div>
+      <script src="bundle.js"></script>
+    </div>
+  </div>
+</body>
+</html>
