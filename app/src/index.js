@@ -29,6 +29,18 @@ const synthSineConfigTwo = {
   }
 };
 
+const synthTriangleConfig = {
+  oscillator: {
+    type: "triangle"
+  },
+  envelope: {
+    attack: 0.5,
+    decay: 0.1,
+    sustain: 0.3,
+    release: 1
+  }
+};
+
 const duoSynthOneConfig = {
   vibratoAmount: 0.5,
   vibratoRate: 5,
@@ -70,18 +82,6 @@ const duoSynthOneConfig = {
       sustain: 1,
       release: 0.5
     }
-  }
-};
-
-const synthTriangleConfig = {
-  oscillator: {
-    type: "triangle"
-  },
-  envelope: {
-    attack: 0.5,
-    decay: 0.1,
-    sustain: 0.3,
-    release: 1
   }
 };
 

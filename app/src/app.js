@@ -1,5 +1,6 @@
 const Bar = require("./bar");
 const Chord = require("./chord");
+const Control = require("./control");
 const Interval = require("music-fns").Interval;
 const Master = require("Tone").Master;
 const MultiTone = require("./multi_tone");
@@ -16,10 +17,9 @@ class App {
     const reverb = new Reverb(config.reverb);
 
     // UI
-    this.startButton = document.getElementById(startSelector);
-    this.startButton.addEventListener("click", () => this.start());
-    this.stopButton = document.getElementById(stopSelector);
-    this.stopButton.addEventListener("click", () => this.stop());
+    const controls = new Control(startSelector, stopSelector, "full-screen");
+    controls.startButton.addEventListener("click", () => this.start());
+    controls.stopButton.addEventListener("click", () => this.stop());
 
     // Tone
     this.partL = new ToneSequence(config.sequenceOne, reverb);
@@ -47,7 +47,7 @@ class App {
     const presets = butterchurnPresets.getPresets();
     const presetKeys = Object.keys(presets);
     console.log(presetKeys);
-    const preset = presets[presetKeys[93]];
+    const preset = presets[presetKeys[92]];
 
     this.visualizer.loadPreset(preset, 0.0);
     this.visualizer.setRendererSize(1600, 1200);
@@ -62,7 +62,6 @@ class App {
     this.chordTwo.play();
     this.transport.start();
     this.poll();
-    this.canvas.requestFullscreen();
   }
 
   stop() {
@@ -97,11 +96,11 @@ class App {
     return this[name];
   }
 
-  getBarLevel(name, seconds = this.getSeconds()) {
+  getBarLevel(name, seconds = this.seconds) {
     return this.getBar(name).getLevel(seconds);
   }
 
-  getSeconds() {
+  get seconds() {
     return this.transport.getSecondsAtTime();
   }
 }
