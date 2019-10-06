@@ -17,7 +17,7 @@
     "jest": "^23.6.0",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
     "music-fns": "^0.1.3",

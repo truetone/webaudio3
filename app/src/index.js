@@ -85,78 +85,102 @@ const synthTriangleConfig = {
   }
 };
 
-const mainNoteSequence = [
-  "D4",
+// const mainNoteSequence = [
+//   "D4",
+//   "E4",
+//   "G#4",
+//   [
+//     "G#4",
+//     "E4",
+//     "D4"
+//   ],
+//   "E4",
+//   "D4",
+//   "C4",
+//   "B4",
+//   [
+//     "E4",
+//     "G#4",
+//     "E4",
+//     [
+//       "D4",
+//       "E4",
+//       "G#4"
+//     ],
+//     "D4",
+//     "C4",
+//     "B4"
+//   ],
+//   "D4",
+//   "B4",
+//   "A4",
+//   [
+//     "E3",
+//     "G#3",
+//     "D3",
+//     "G#4"
+//   ],
+//   "E3",
+//   "G#3",
+//   "D3",
+//   "G#4",
+//   [
+//     "D3",
+//     "E3",
+//     "F#3",
+//     "G3"
+//   ]
+// ];
+
+const secondNoteSequence = [
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2",
   "E4",
-  "G#4",
-  [
-    "G#4",
-    "E4",
-    "D4"
-  ],
-  "E4",
+  "F#4",
   "D4",
-  "C4",
-  "B4",
-  [
-    "E4",
-    "G#4",
-    "E4",
-    [
-      "D4",
-      "E4",
-      "G#4"
-    ],
-    "D4",
-    "C4",
-    "B4"
-  ],
-  "D4",
-  "B4",
-  "A4",
-  [
-    "E3",
-    "G#3",
-    "D3",
-    "G#4"
-  ],
-  "E3",
-  "G#3",
-  "D3",
-  "G#4",
-  [
-    "D3",
-    "E3",
-    "F#3",
-    "G3"
-  ]
+  "A3"
 ];
+
+const ePulse = [
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2",
+  "E2"
+]
 
 const sequenceOneConfig = {
   synth: synthSineConfigOne,
   pan: -0.8,
-  noteInterval: "8n",
+  noteInterval: "2n",
   playbackRate: 1.0,
-  noteSequence: mainNoteSequence,
+  noteSequence: secondNoteSequence,
   volume: -20
 };
 
 const sequenceTwoConfig = {
   synth: synthTriangleConfig,
   pan: 0.8,
-  noteInterval: "8n",
-  playbackRate: 0.8,
-  noteSequence: mainNoteSequence,
-  volume: -20
+  noteInterval: "2n",
+  playbackRate: 0.6,
+  noteSequence: secondNoteSequence,
+  volume: -25
 };
 
 const sequenceThreeConfig = {
   synth: synthSineConfigTwo,
   pan: -0.3,
-  noteInterval: "8n",
+  noteInterval: "4n",
   playbackRate: 0.6,
-  noteSequence: mainNoteSequence,
-  volume: -30
+  noteSequence: ePulse,
+  volume: -40
 };
 
 const sequenceFourConfig = {
@@ -164,19 +188,19 @@ const sequenceFourConfig = {
   pan: 0.3,
   noteInterval: "8n",
   playbackRate: 0.4,
-  noteSequence: mainNoteSequence,
+  noteSequence: ePulse,
   volume: -30
 };
 
 const reverbConfig = {
-  "decay": 0.5,
+  "decay": 2,
   "roomSize": 0.8,
-  "wet": 0.4
+  "wet": 0.8
 };
 
 const config = {
   bpm: 10,
-  loopInterval: "4n",
+  loopInterval: "8n",
   reverb: reverbConfig,
   barElementIds: [
     "bar-one",
